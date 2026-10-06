@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section } from "@/components/shared/Section";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -9,12 +10,12 @@ export const metadata = buildMetadata({
 });
 
 const tiles = [
-  "Folded wash & load ready for delivery",
-  "Industrial washers in action",
-  "Dry cleaning station",
-  "Pressing & finishing",
-  "Sorted and tagged orders",
-  "Delivery van loading",
+  { src: "/Pic-1.png", caption: "Folded wash & load ready for delivery" },
+  { src: "/Pic-2.png", caption: "Industrial washers in action" },
+  { src: "/Pic-3.png", caption: "Dry cleaning station" },
+  { src: "/Pic-4.png", caption: "Pressing & finishing" },
+  { src: "/Pic-5.png", caption: "Sorted and tagged orders" },
+  { src: "/Pic-6.png", caption: "Delivery van loading" },
 ];
 
 export default function GalleryPage() {
@@ -30,14 +31,19 @@ export default function GalleryPage() {
       </div>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {tiles.map((caption, index) => (
+        {tiles.map(({ src, caption }) => (
           <figure
-            key={caption}
+            key={src}
             className="overflow-hidden rounded-xl border border-zinc-200 bg-white"
           >
-            {/* Boilerplate: replace with next/image once real photos exist. */}
-            <div className="flex aspect-[4/3] items-center justify-center bg-zinc-100 text-sm text-zinc-400">
-              Photo {index + 1}
+            <div className="relative aspect-[4/3] bg-zinc-100">
+              <Image
+                src={src}
+                alt={caption}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover"
+              />
             </div>
             <figcaption className="px-4 py-3 text-sm text-zinc-600">
               {caption}
