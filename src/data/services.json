@@ -1,0 +1,52 @@
+[
+  {
+    "id": "svc-1",
+    "name": "Wash & Fold",
+    "slug": "wash-and-fold",
+    "description": "Everyday laundry washed, dried and neatly folded. Perfect for weekly loads.",
+    "price": 2.5,
+    "unit": "kg",
+    "category": "Wash",
+    "featured": true
+  },
+  {
+    "id": "svc-2",
+    "name": "Dry Cleaning",
+    "slug": "dry-cleaning",
+    "description": "Gentle solvent cleaning for suits, dresses and delicate fabrics.",
+    "price": 8,
+    "unit": "item",
+    "category": "Dry Clean",
+    "featured": true
+  },
+  {
+    "id": "svc-3",
+    "name": "Ironing & Pressing",
+    "slug": "ironing-and-pressing",
+    "description": "Crisp, wrinkle-free pressing for shirts, trousers and linens.",
+    "price": 1.5,
+    "unit": "item",
+    "category": "Iron",
+    "featured": true
+  },
+  {
+    "id": "svc-4",
+    "name": "Stain Removal",
+    "slug": "stain-removal",
+    "description": "Targeted pre-treatment for wine, oil, ink and grass stains.",
+    "price": 4,
+    "unit": "item",
+    "category": "Care",
+    "featured": false
+  },
+  {
+    "id": "svc-5",
+    "name": "Bedding & Curtains",
+    "slug": "bedding-and-curtains",
+    "description": "Deep cleaning for duvets, comforters, bed sheets and curtains.",
+    "price": 12,
+    "unit": "load",
+    "category": "Home",
+    "featured": false
+  }
+]

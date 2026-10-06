@@ -1,0 +1,38 @@
+[
+  {
+    "id": "stf-1",
+    "name": "Marcus Webb",
+    "role": "manager",
+    "email": "marcus.webb@example.com",
+    "phone": "+1 (555) 301-1001",
+    "shift": "morning",
+    "active": true
+  },
+  {
+    "id": "stf-2",
+    "name": "Priya Nair",
+    "role": "operator",
+    "email": "priya.nair@example.com",
+    "phone": "+1 (555) 301-1002",
+    "shift": "morning",
+    "active": true
+  },
+  {
+    "id": "stf-3",
+    "name": "Tom Alvarez",
+    "role": "driver",
+    "email": "tom.alvarez@example.com",
+    "phone": "+1 (555) 301-1003",
+    "shift": "afternoon",
+    "active": true
+  },
+  {
+    "id": "stf-4",
+    "name": "Sofia Grant",
+    "role": "attendant",
+    "email": "sofia.grant@example.com",
+    "phone": "+1 (555) 301-1004",
+    "shift": "evening",
+    "active": false
+  }
+]

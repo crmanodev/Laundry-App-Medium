@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cus-1",
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "phone": "+1 (555) 101-2001",
+    "address": "12 Elm Street, Springfield",
+    "ordersCount": 14,
+    "totalSpent": 420.5,
+    "createdAt": "2025-01-12T10:00:00.000Z"
+  },
+  {
+    "id": "cus-2",
+    "name": "Brian Lee",
+    "email": "brian.lee@example.com",
+    "phone": "+1 (555) 101-2002",
+    "address": "88 Oak Avenue, Springfield",
+    "ordersCount": 7,
+    "totalSpent": 189.9,
+    "createdAt": "2025-02-03T14:30:00.000Z"
+  },
+  {
+    "id": "cus-3",
+    "name": "Carla Mendes",
+    "email": "carla.mendes@example.com",
+    "phone": "+1 (555) 101-2003",
+    "address": "5 Pine Road, Shelbyville",
+    "ordersCount": 22,
+    "totalSpent": 735,
+    "createdAt": "2025-03-21T09:15:00.000Z"
+  },
+  {
+    "id": "cus-4",
+    "name": "Daniel Okafor",
+    "email": "daniel.okafor@example.com",
+    "phone": "+1 (555) 101-2004",
+    "address": "402 Cedar Blvd, Shelbyville",
+    "ordersCount": 3,
+    "totalSpent": 64.25,
+    "createdAt": "2025-05-08T18:45:00.000Z"
+  },
+  {
+    "id": "cus-5",
+    "name": "Emma Rivera",
+    "email": "emma.rivera@example.com",
+    "phone": "+1 (555) 101-2005",
+    "address": "77 Birch Lane, Springfield",
+    "ordersCount": 11,
+    "totalSpent": 312.8,
+    "createdAt": "2025-06-17T11:05:00.000Z"
+  }
+]

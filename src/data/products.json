@@ -1,0 +1,47 @@
+[
+  {
+    "id": "prd-1",
+    "name": "Detergent Powder",
+    "category": "Chemicals",
+    "stock": 45,
+    "unit": "kg",
+    "reorderLevel": 20,
+    "price": 3.2
+  },
+  {
+    "id": "prd-2",
+    "name": "Fabric Softener",
+    "category": "Chemicals",
+    "stock": 12,
+    "unit": "litre",
+    "reorderLevel": 15,
+    "price": 4.5
+  },
+  {
+    "id": "prd-3",
+    "name": "Stain Remover Spray",
+    "category": "Chemicals",
+    "stock": 30,
+    "unit": "bottle",
+    "reorderLevel": 10,
+    "price": 6
+  },
+  {
+    "id": "prd-4",
+    "name": "Paper Bags (Large)",
+    "category": "Packaging",
+    "stock": 200,
+    "unit": "piece",
+    "reorderLevel": 50,
+    "price": 0.2
+  },
+  {
+    "id": "prd-5",
+    "name": "Hangers",
+    "category": "Accessories",
+    "stock": 8,
+    "unit": "piece",
+    "reorderLevel": 25,
+    "price": 0.5
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "name": "Fresh Fold Laundry",
+  "tagline": "Laundry day, handled.",
+  "description": "Book a free pickup, we wash, dry, fold and deliver fresh clothes to your doorstep — usually within 24 hours.",
+  "social": [
+    { "label": "Twitter", "href": "https://twitter.com" },
+    { "label": "Instagram", "href": "https://instagram.com" },
+    { "label": "Facebook", "href": "https://facebook.com" }
+  ]
+}

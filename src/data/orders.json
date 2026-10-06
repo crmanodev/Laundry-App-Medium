@@ -1,0 +1,70 @@
+[
+  {
+    "id": "ord-1",
+    "orderNumber": "FF-1001",
+    "customerId": "cus-1",
+    "customerName": "Alice Johnson",
+    "items": [
+      { "serviceId": "svc-1", "name": "Wash & Fold", "quantity": 8, "unitPrice": 2.5 },
+      { "serviceId": "svc-3", "name": "Ironing & Pressing", "quantity": 5, "unitPrice": 1.5 }
+    ],
+    "status": "delivered",
+    "total": 27.5,
+    "placedAt": "2026-09-28T09:00:00.000Z",
+    "dueAt": "2026-09-29T18:00:00.000Z"
+  },
+  {
+    "id": "ord-2",
+    "orderNumber": "FF-1002",
+    "customerId": "cus-3",
+    "customerName": "Carla Mendes",
+    "items": [
+      { "serviceId": "svc-2", "name": "Dry Cleaning", "quantity": 3, "unitPrice": 8 }
+    ],
+    "status": "ready",
+    "total": 24,
+    "placedAt": "2026-10-02T13:20:00.000Z",
+    "dueAt": "2026-10-04T12:00:00.000Z"
+  },
+  {
+    "id": "ord-3",
+    "orderNumber": "FF-1003",
+    "customerId": "cus-2",
+    "customerName": "Brian Lee",
+    "items": [
+      { "serviceId": "svc-1", "name": "Wash & Fold", "quantity": 12, "unitPrice": 2.5 },
+      { "serviceId": "svc-5", "name": "Bedding & Curtains", "quantity": 1, "unitPrice": 12 }
+    ],
+    "status": "washing",
+    "total": 42,
+    "placedAt": "2026-10-05T08:45:00.000Z",
+    "dueAt": "2026-10-06T18:00:00.000Z"
+  },
+  {
+    "id": "ord-4",
+    "orderNumber": "FF-1004",
+    "customerId": "cus-5",
+    "customerName": "Emma Rivera",
+    "items": [
+      { "serviceId": "svc-3", "name": "Ironing & Pressing", "quantity": 10, "unitPrice": 1.5 }
+    ],
+    "status": "processing",
+    "total": 15,
+    "placedAt": "2026-10-06T07:30:00.000Z",
+    "dueAt": "2026-10-07T10:00:00.000Z"
+  },
+  {
+    "id": "ord-5",
+    "orderNumber": "FF-1005",
+    "customerId": "cus-4",
+    "customerName": "Daniel Okafor",
+    "items": [
+      { "serviceId": "svc-4", "name": "Stain Removal", "quantity": 2, "unitPrice": 4 },
+      { "serviceId": "svc-1", "name": "Wash & Fold", "quantity": 6, "unitPrice": 2.5 }
+    ],
+    "status": "pending",
+    "total": 23,
+    "placedAt": "2026-10-06T16:10:00.000Z",
+    "dueAt": "2026-10-08T18:00:00.000Z"
+  }
+]
