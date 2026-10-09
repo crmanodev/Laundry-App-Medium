@@ -1,84 +1,89 @@
 import { Section } from "@/components/shared/Section";
+import { Reveal } from "@/components/website/Reveal";
+import { SectionHeading } from "@/components/website/SectionHeading";
+import { WhatsAppButton } from "@/components/website/ContactActions";
+import { getDict } from "@/lib/i18n";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Learn about Fresh Fold Laundry — our story, our mission and the values behind our 24-hour laundry service.",
+    "Learn about OM SAI STEAM & LAUNDRY HUB — careful fabric handling, straightforward pricing and a proper steam finish.",
   path: "/about",
 });
 
-const values = [
-  {
-    title: "Quality first",
-    description:
-      "Every garment is inspected, sorted and treated individually before it enters a machine.",
-  },
-  {
-    title: "Transparent pricing",
-    description:
-      "No hidden fees. You see the price per kilo or per item before you confirm an order.",
-  },
-  {
-    title: "Sustainable care",
-    description:
-      "Eco-friendly detergents, low-energy machines and reusable packaging on every delivery.",
-  },
-];
-
-const stats = [
-  { value: "10k+", label: "Orders delivered" },
-  { value: "24h", label: "Average turnaround" },
-  { value: "4.9/5", label: "Customer rating" },
-];
-
 export default function AboutPage() {
-  return (
-    <Section className="pt-12">
-      <div className="flex flex-col gap-10">
-        <div className="max-w-2xl">
-          <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">
-            About us
-          </h1>
-          <p className="mt-4 leading-7 text-zinc-600">
-            Fresh Fold Laundry started as a single washer and a promise: give
-            people their time back. Today we clean thousands of garments every
-            week with the same care, combining modern machines with a
-            detail-obsessed team.
-          </p>
-          <p className="mt-4 leading-7 text-zinc-600">
-            From wash &amp; fold to delicate dry cleaning, we treat every order
-            as if it were our own — and deliver it back fresh, on time, every
-            time.
-          </p>
-        </div>
+  const dict = getDict();
+  const { about } = dict;
 
-        <div className="grid gap-4 sm:grid-cols-3">
-          {stats.map((stat) => (
-            <div key={stat.label} className="surface p-5 text-center">
-              <p className="text-3xl font-semibold tracking-tight text-zinc-900">
-                {stat.value}
+  return (
+    <Section className="pt-14">
+      <div className="flex flex-col gap-12">
+        <Reveal>
+          <SectionHeading
+            as="h1"
+            title={about.title}
+            description={about.lead}
+          />
+          <p className="mt-4 max-w-2xl leading-7 text-ink-muted">
+            {about.lead2}
+          </p>
+        </Reveal>
+
+        {/* Brand promise band */}
+        <Reveal>
+          <div className="brand-gradient relative overflow-hidden rounded-3xl px-6 py-10 shadow-[var(--shadow-brand)] sm:px-10">
+            <div className="dot-grid absolute inset-0 opacity-15" aria-hidden />
+            <div className="relative max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-on-primary/80">
+                Our promise
               </p>
-              <p className="mt-1 text-sm text-zinc-500">{stat.label}</p>
+              <p className="mt-3 text-xl font-semibold leading-8 text-on-primary text-balance sm:text-2xl">
+                Clean, simple and done right — every single load.
+              </p>
             </div>
-          ))}
-        </div>
+          </div>
+        </Reveal>
 
         <div>
-          <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
-            Our values
-          </h2>
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            {values.map((value) => (
-              <div key={value.title} className="surface p-5">
-                <h3 className="font-medium text-zinc-900">{value.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-zinc-500">
-                  {value.description}
-                </p>
-              </div>
+          <Reveal>
+            <SectionHeading title={about.valuesTitle} />
+          </Reveal>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {about.values.map((value, index) => (
+              <Reveal key={value.title} delayMs={index * 70}>
+                <div className="surface h-full p-6">
+                  <span
+                    aria-hidden
+                    className="brand-gradient flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-on-primary"
+                  >
+                    {index + 1}
+                  </span>
+                  <h2 className="mt-4 font-semibold text-ink">
+                    {value.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-6 text-ink-muted">
+                    {value.description}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
+
+        <Reveal>
+          <div className="flex flex-col items-start gap-4 rounded-2xl border border-line bg-surface p-8 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-lg font-semibold text-ink">
+                Have laundry that needs care?
+              </h2>
+              <p className="mt-1 text-sm text-ink-muted">
+                Message us — we&apos;ll quote before we start.
+              </p>
+            </div>
+            <WhatsAppButton className="w-full sm:w-auto" />
+          </div>
+        </Reveal>
       </div>
     </Section>
   );

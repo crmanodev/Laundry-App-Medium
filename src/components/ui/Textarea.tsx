@@ -22,7 +22,7 @@ export function Textarea({
       {label ? (
         <label
           htmlFor={textareaId}
-          className="text-sm font-medium text-zinc-700"
+          className="text-sm font-medium text-ink-muted"
         >
           {label}
         </label>
@@ -32,13 +32,13 @@ export function Textarea({
         rows={rows}
         aria-invalid={error ? true : undefined}
         className={cn(
-          "w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900",
-          error && "border-red-500",
+          "w-full rounded-lg border border-line-strong bg-surface px-3 py-2 text-sm text-ink placeholder:text-ink-faint focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
+          error && "border-danger",
           className,
         )}
         {...props}
       />
-      {error ? <p className="text-xs text-red-600">{error}</p> : null}
+      {error ? <p className="text-xs text-danger">{error}</p> : null}
     </div>
   );
 }

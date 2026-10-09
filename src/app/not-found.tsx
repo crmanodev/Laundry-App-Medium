@@ -1,21 +1,21 @@
 import Link from "next/link";
+import { getDict } from "@/lib/i18n";
 
 export default function NotFound() {
+  const dict = getDict();
+
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4 px-4 py-32 text-center">
-      <p className="text-6xl font-semibold tracking-tight text-zinc-900">
-        404
-      </p>
-      <h1 className="text-xl font-medium text-zinc-700">Page not found</h1>
-      <p className="max-w-md text-sm leading-6 text-zinc-500">
-        Sorry, the page you are looking for doesn&apos;t exist or has been
-        moved.
+      <p className="text-6xl font-semibold tracking-tight text-primary">404</p>
+      <h1 className="text-xl font-medium text-ink">{dict.notFound.title}</h1>
+      <p className="max-w-md text-sm leading-6 text-ink-muted">
+        {dict.notFound.description}
       </p>
       <Link
         href="/"
-        className="mt-2 inline-flex h-10 items-center rounded-lg bg-zinc-900 px-5 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
+        className="mt-2 inline-flex h-10 items-center rounded-full bg-primary px-5 text-sm font-medium text-on-primary transition-colors hover:bg-primary-hover"
       >
-        Back to home
+        {dict.common.backToHome}
       </Link>
     </div>
   );

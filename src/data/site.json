@@ -1,10 +1,6 @@
 {
-  "name": "Fresh Fold Laundry",
-  "tagline": "Laundry day, handled.",
-  "description": "Book a free pickup, we wash, dry, fold and deliver fresh clothes to your doorstep — usually within 24 hours.",
-  "social": [
-    { "label": "Twitter", "href": "https://twitter.com" },
-    { "label": "Instagram", "href": "https://instagram.com" },
-    { "label": "Facebook", "href": "https://facebook.com" }
-  ]
+  "name": "OM SAI STEAM & LAUNDRY HUB",
+  "tagline": "Fresh clothes. Steam-perfected care.",
+  "description": "Professional steam laundry, wash & fold, dry cleaning and ironing — handled with care and easy to order on WhatsApp or phone.",
+  "social": []
 }

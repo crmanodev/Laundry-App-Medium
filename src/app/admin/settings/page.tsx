@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { PageHeader } from "@/components/shared/PageHeader";
+import { ThemeCustomizer } from "@/components/admin/ThemeCustomizer";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { getSettings } from "@/lib/repositories/settings";
@@ -18,13 +19,19 @@ export default function AdminSettingsPage() {
   };
 
   return (
-    <div className="max-w-2xl">
-      <PageHeader
-        title="Settings"
-        description="Business details used across the app and on the website."
-      />
+    <div className="grid max-w-4xl gap-6">
+      <div className="max-w-2xl">
+        <PageHeader
+          title="Settings"
+          description="Business details used across the app and on the website."
+        />
+      </div>
 
-      <form onSubmit={handleSubmit} className="surface grid gap-4 p-6">
+      {/* Theme — live preview + persistence */}
+      <ThemeCustomizer />
+
+      <form onSubmit={handleSubmit} className="surface grid max-w-2xl gap-4 p-6">
+        <h2 className="font-semibold text-ink">Business details</h2>
         <Input
           name="businessName"
           label="Business name"
@@ -35,6 +42,7 @@ export default function AdminSettingsPage() {
           type="email"
           label="Support email"
           defaultValue={settings.supportEmail}
+          placeholder="Optional"
         />
         <Input
           name="supportPhone"
@@ -72,7 +80,7 @@ export default function AdminSettingsPage() {
         <div className="mt-2 flex items-center gap-3">
           <Button type="submit">Save changes</Button>
           {saved ? (
-            <span className="text-sm font-medium text-emerald-600">
+            <span className="text-sm font-medium text-success">
               Settings saved.
             </span>
           ) : null}

@@ -2,37 +2,82 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { WEBSITE_NAV } from "@/lib/constants";
+import { usePathname } from "next/navigation";
+import {
+  CONTACT_PHONE,
+  WEBSITE_NAV,
+  WHATSAPP_URL,
+} from "@/lib/constants";
+import { getDict } from "@/lib/i18n";
 import { cn } from "@/lib/utils/cn";
 
 export function MobileMenu({ className }: { className?: string }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const dict = getDict();
 
   return (
     <div className={cn("relative", className)}>
       <button
         type="button"
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={open ? dict.common.closeMenu : dict.common.openMenu}
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
-        className="flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-200 text-zinc-700 transition-colors hover:bg-zinc-50"
+        className="flex h-10 w-10 items-center justify-center rounded-xl border border-line text-ink transition-colors hover:bg-surface-soft"
       >
-        {open ? "✕" : "☰"}
+        <span aria-hidden className="text-lg leading-none">
+          {open ? "✕" : "☰"}
+        </span>
       </button>
 
       {open ? (
-        <nav className="absolute right-0 top-11 z-50 w-48 overflow-hidden rounded-lg border border-zinc-200 bg-white py-1 shadow-lg">
-          {WEBSITE_NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="block px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="fixed inset-x-0 top-16 z-50 border-b border-line bg-surface shadow-xl md:hidden">
+          <nav className="flex flex-col gap-1 px-4 py-4">
+            {WEBSITE_NAV.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : !item.href.includes("#") &&
+                    pathname.startsWith(item.href);
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "rounded-xl px-4 py-3 text-base font-medium transition-colors",
+                    isActive
+                      ? "bg-primary-soft text-primary"
+                      : "text-ink hover:bg-surface-soft",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+
+            <div className="mt-3 grid grid-cols-2 gap-3 border-t border-line pt-4">
+              <a
+                href={`tel:${CONTACT_PHONE}`}
+                onClick={() => setOpen(false)}
+                className="inline-flex h-11 items-center justify-center rounded-full border border-line-strong text-sm font-semibold text-ink transition-colors hover:border-primary hover:text-primary"
+              >
+                {dict.common.call}
+              </a>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="inline-flex h-11 items-center justify-center rounded-full bg-[#25D366] text-sm font-semibold text-white"
+              >
+                {dict.common.whatsappShort}
+              </a>
+            </div>
+          </nav>
+        </div>
       ) : null}
     </div>
   );

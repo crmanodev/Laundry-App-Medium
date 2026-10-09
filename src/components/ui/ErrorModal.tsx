@@ -19,7 +19,7 @@ export function ErrorModal({
   return (
     <Modal open={open} onClose={onClose} title={title}>
       <div className="flex flex-col items-center gap-4 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100 text-2xl text-red-600">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-danger-soft text-2xl text-danger">
           !
         </span>
         <p className="text-sm text-zinc-600">{message}</p>

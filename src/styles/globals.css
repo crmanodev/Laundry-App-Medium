@@ -1,27 +1,195 @@
 @import "tailwindcss";
 @import "./components.css";
 
+/*
+ * OM SAI STEAM & LAUNDRY HUB — design tokens
+ * ---------------------------------------------------------
+ * Brand tokens (--primary, --secondary, gradients, shadows) are
+ * overridden at runtime by ThemeProvider / the admin customizer.
+ * Every other token is defined here and consumed through Tailwind
+ * utilities (bg-surface, text-ink-muted, border-line, …) or plain
+ * CSS `var(...)` references — never with hard-coded hex values.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand (defaults = Ocean Blue preset; updated at runtime) */
+  --primary: #0878f9;
+  --primary-hover: #0767d8;
+  --primary-active: #065bbd;
+  --primary-soft: #e9f2fe;
+  --primary-ring: rgba(8, 120, 249, 0.4);
+  --on-primary: #ffffff;
+  --secondary: #08b9e8;
+  --secondary-hover: #07a5ce;
+  --secondary-soft: #e6f9fe;
+  --on-secondary: #0b1220;
+  --gradient-brand: linear-gradient(135deg, #0878f9 0%, #08b9e8 100%);
+  --gradient-brand-strong: linear-gradient(135deg, #076fdc 0%, #07a9d1 100%);
+  --shadow-brand: 0 14px 34px -14px rgba(8, 120, 249, 0.55);
+
+  /* Surfaces & text */
+  --background: #f6f9fc;
+  --surface: #ffffff;
+  --surface-soft: #eef3f9;
+  --ink: #0f172a;
+  --ink-muted: #475569;
+  --ink-faint: #94a3b8;
+
+  /* Lines */
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* Feedback states */
+  --success: #16a34a;
+  --success-soft: #dcfce7;
+  --warning: #d97706;
+  --warning-soft: #fef3c7;
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+
+  /* Back-compat aliases for Tailwind's default theme names */
+  --foreground: var(--ink);
 }
 
+/*
+ * Tailwind v4 theme bridge: every `--color-*` below becomes a full
+ * utility family (bg-*, text-*, border-*, ring-*, fill-*, …).
+ * `inline` keeps the `var()` references so runtime theme changes
+ * propagate without rebuilding the stylesheet.
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-soft: var(--primary-soft);
+  --color-on-primary: var(--on-primary);
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-soft: var(--secondary-soft);
+  --color-on-secondary: var(--on-secondary);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-poppins), var(--font-inter), ui-sans-serif,
+    sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* keep anchors clear of the sticky header */
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--ink);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-poppins), var(--font-inter), ui-sans-serif,
+      sans-serif;
+  }
+
+  ::selection {
+    background-color: var(--primary);
+    color: var(--on-primary);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Global decorative background — "Fresh Laundry Waves and Sparkles".
+ * Mounted exactly once in app/layout.tsx so every route (website, admin,
+ * 404) inherits it. It sits behind all content (z-index: -1), never
+ * intercepts input (pointer-events: none), and keeps the PNG's alpha
+ * channel intact — only the page's own --background shows through the
+ * transparent areas. Colours stay token-driven so the admin theme
+ * customizer keeps working unchanged.
+ */
+.app-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--background);
+}
+
+/* Desktop / landscape: fill the viewport, anchored to the bottom. */
+.app-background__image {
+  object-fit: cover;
+  object-position: bottom center;
+}
+
+/*
+ * Subtle white veil so headings, links, and buttons placed directly on
+ * the background keep enough contrast without hiding the artwork.
+ */
+.app-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.12) 35%,
+    rgba(255, 255, 255, 0.35) 100%
+  );
+}
+
+/* Mobile / portrait: show the whole artwork as a band along the bottom. */
+@media (max-width: 767px), (orientation: portrait) {
+  .app-background__image {
+    object-fit: contain;
+    object-position: bottom center;
+  }
+}
+
+/* No decorative background when printing. */
+@media print {
+  .app-background {
+    display: none;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

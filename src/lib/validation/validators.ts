@@ -26,6 +26,12 @@ export const maxLength =
       ? null
       : `Must be at most ${max} character${max === 1 ? "" : "s"}.`;
 
+/** Indian phone numbers: 10–15 digits, optional +/spaces/dashes. */
+export const phone: Validator = (value) =>
+  /^\+?[\d\s-]{10,16}$/.test(value.trim())
+    ? null
+    : "Enter a valid phone number.";
+
 /** Runs validators in order and returns the first error, or `null`. */
 export const compose =
   (...validators: Validator[]): Validator =>

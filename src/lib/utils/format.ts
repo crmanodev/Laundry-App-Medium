@@ -1,11 +1,19 @@
-const currencyFormatter = new Intl.NumberFormat("en-US", {
+const currencyFormatter = new Intl.NumberFormat("en-IN", {
   style: "currency",
-  currency: "USD",
+  currency: "INR",
+  maximumFractionDigits: 2,
 });
 
-const numberFormatter = new Intl.NumberFormat("en-US");
+const numberFormatter = new Intl.NumberFormat("en-IN");
 
-export function formatCurrency(amount: number): string {
+/**
+ * Formats an amount as INR currency.
+ * Returns "—" for `null`/`undefined` (services priced on request).
+ */
+export function formatCurrency(amount: number | null | undefined): string {
+  if (amount === null || amount === undefined || Number.isNaN(amount)) {
+    return "—";
+  }
   return currencyFormatter.format(amount);
 }
 

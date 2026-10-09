@@ -1,67 +1,76 @@
 import Link from "next/link";
 import { Section } from "@/components/shared/Section";
+import { Reveal } from "@/components/website/Reveal";
+import { SectionHeading } from "@/components/website/SectionHeading";
+import { getDict } from "@/lib/i18n";
 import { getServices } from "@/lib/repositories/services";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { formatCurrency } from "@/lib/utils/format";
 
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "Simple, transparent per-kilo and per-item pricing for all laundry and dry-cleaning services.",
+    "Straightforward, on-request pricing for laundry and garment care at OM SAI STEAM & LAUNDRY HUB — ask us for a quick quote.",
   path: "/pricing",
 });
 
 export default function PricingPage() {
+  const dict = getDict();
   const services = getServices();
 
   return (
-    <Section className="pt-12">
-      <div className="max-w-2xl">
-        <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">
-          Pricing
-        </h1>
-        <p className="mt-4 leading-7 text-zinc-600">
-          Straightforward rates with no hidden fees. Bulk orders and recurring
-          pickups qualify for additional discounts.
-        </p>
-      </div>
+    <Section className="pt-14">
+      <Reveal>
+        <SectionHeading
+          as="h1"
+          title={dict.pricing.title}
+          description={dict.pricing.description}
+        />
+      </Reveal>
 
-      <div className="surface mt-10 divide-y divide-zinc-100">
-        {services.map((service) => (
-          <div
-            key={service.id}
-            className="flex items-center justify-between gap-6 px-6 py-4"
-          >
-            <div>
-              <p className="font-medium text-zinc-900">{service.name}</p>
-              <p className="mt-0.5 text-sm text-zinc-500">
-                {service.description}
-              </p>
-            </div>
-            <p className="shrink-0 text-lg font-semibold text-zinc-900">
-              {formatCurrency(service.price)}
-              <span className="ml-1 text-sm font-normal text-zinc-500">
-                / {service.unit}
-              </span>
+      <Reveal delayMs={60}>
+        <div className="surface mt-10 overflow-hidden">
+          <div className="border-b border-line bg-surface-soft px-6 py-4">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
+              {dict.pricing.listTitle}
+            </h2>
+          </div>
+          <ul className="divide-y divide-line">
+            {services.map((service) => (
+              <li
+                key={service.id}
+                className="flex flex-col gap-2 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+              >
+                <div>
+                  <p className="font-semibold text-ink">{service.name}</p>
+                  <p className="mt-0.5 text-sm text-ink-muted">
+                    {service.description}
+                  </p>
+                </div>
+                <p className="shrink-0 text-sm font-semibold text-primary">
+                  {dict.common.priceOnRequest}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Reveal>
+
+      <Reveal delayMs={100}>
+        <div className="brand-gradient mt-8 flex flex-col items-start gap-4 rounded-2xl px-6 py-6 text-on-primary shadow-[var(--shadow-brand)] sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="font-semibold">{dict.pricing.customQuote.title}</p>
+            <p className="mt-1 text-sm opacity-90">
+              {dict.pricing.customQuote.description}
             </p>
           </div>
-        ))}
-      </div>
-
-      <div className="mt-8 flex flex-col items-start gap-3 rounded-xl bg-zinc-900 px-6 py-6 text-white sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-medium">Need a custom quote?</p>
-          <p className="mt-1 text-sm text-zinc-300">
-            Commercial and bulk orders get tailored rates.
-          </p>
+          <Link
+            href="/contact"
+            className="inline-flex h-11 shrink-0 items-center justify-center rounded-full bg-surface px-5 text-sm font-semibold text-ink transition-transform hover:brightness-95"
+          >
+            {dict.common.requestQuote}
+          </Link>
         </div>
-        <Link
-          href="/contact"
-          className="inline-flex h-10 items-center rounded-lg bg-white px-4 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-100"
-        >
-          Request a quote
-        </Link>
-      </div>
+      </Reveal>
     </Section>
   );
 }

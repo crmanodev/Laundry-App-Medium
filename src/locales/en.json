@@ -1,0 +1,190 @@
+{
+  "common": {
+    "whatsapp": "WhatsApp Us",
+    "whatsappShort": "WhatsApp",
+    "call": "Call Us",
+    "callNow": "Call now",
+    "contactUs": "Contact Us",
+    "getQuote": "Get a Quote",
+    "requestQuote": "Request a quote",
+    "viewServices": "View services",
+    "viewAllServices": "View all services",
+    "learnMore": "Learn more",
+    "priceOnRequest": "Contact Us for Pricing",
+    "getDirections": "Get Directions",
+    "sendMessage": "Send message",
+    "sendOnWhatsApp": "Send on WhatsApp",
+    "backToHome": "Back to home",
+    "address": "Address",
+    "phone": "Phone",
+    "openingHours": "Opening hours",
+    "quickLinks": "Quick links",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu"
+  },
+  "hero": {
+    "eyebrow": "Steam laundry care, done right",
+    "title": "Fresh clothes, steam-finished with care.",
+    "description": "Wash & fold, dry cleaning, steam ironing and stain removal for homes and businesses — with straightforward pricing you can trust.",
+    "trustChips": [
+      "Steam-pressed finish",
+      "Fabric-aware handling",
+      "Clear, upfront quotes"
+    ]
+  },
+  "home": {
+    "services": {
+      "title": "Our services",
+      "subtitle": "Cleaned, pressed and ready for everyday life.",
+      "allServicesLink": "View all services"
+    },
+    "whyChooseUs": {
+      "eyebrow": "Why choose us",
+      "title": "Laundry care you can rely on",
+      "description": "We look after your clothes the way we'd want ours looked after — careful handling, honest quotes and a finish you'll notice.",
+      "items": [
+        {
+          "title": "Steam-finished care",
+          "description": "Proper steam pressing for a crisp, ready-to-wear finish on every order."
+        },
+        {
+          "title": "Fabric-aware handling",
+          "description": "Clothes are sorted by fabric and care needs before any washing begins."
+        },
+        {
+          "title": "Clear, upfront pricing",
+          "description": "Tell us what needs cleaning and we'll quote before we start — no surprises."
+        },
+        {
+          "title": "Easy to reach",
+          "description": "Call or WhatsApp us on +91 98430 09971 — no apps or accounts needed."
+        },
+        {
+          "title": "Stain pre-treatment",
+          "description": "Stubborn marks get targeted pre-treatment before the wash, not after."
+        },
+        {
+          "title": "Homes & businesses",
+          "description": "From daily household loads to shops, salons and office linen."
+        }
+      ]
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "Three simple steps",
+      "steps": [
+        {
+          "title": "Reach out",
+          "description": "Call or WhatsApp us with what needs cleaning."
+        },
+        {
+          "title": "Hand over your laundry",
+          "description": "Drop it at our shop or arrange a handover that suits you."
+        },
+        {
+          "title": "Collect fresh clothes",
+          "description": "Pick up laundry that's clean, pressed and ready to wear."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "What our customers say",
+      "description": "Verified reviews from our customers will be published here.",
+      "placeholder": "Testimonials coming soon"
+    },
+    "cta": {
+      "title": "Ready for fresher, sharper clothes?",
+      "description": "Message us on WhatsApp or give us a call — tell us what needs cleaning and we'll take it from there."
+    }
+  },
+  "about": {
+    "title": "About us",
+    "lead": "OM SAI STEAM & LAUNDRY HUB was built around a simple idea: laundry should be clean, simple and done right.",
+    "lead2": "We combine careful sorting, thoughtful stain treatment and a proper steam finish — so your clothes come back fresh, crisp and ready to wear.",
+    "valuesTitle": "What we stand for",
+    "values": [
+      {
+        "title": "Care in every load",
+        "description": "Each order is checked, sorted and handled with attention to fabric and finish."
+      },
+      {
+        "title": "Straightforward pricing",
+        "description": "We quote before we work, so you always know what you're paying and why."
+      },
+      {
+        "title": "Respect for your time",
+        "description": "Simple ordering on WhatsApp or phone, and laundry that's ready when we say it will be."
+      }
+    ]
+  },
+  "servicesPage": {
+    "title": "Our services",
+    "description": "From everyday laundry to careful garment treatment — here's how we can help.",
+    "priceNote": "Pricing depends on fabric, item and load. Contact us for a quick quote.",
+    "viewDetails": "Enquire about this service"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "description": "Straightforward, on-request pricing — tell us what needs cleaning and we'll confirm the cost before we start.",
+    "listTitle": "Services",
+    "customQuote": {
+      "title": "Need a custom quote?",
+      "description": "Tell us about your items and we'll reply with a clear price."
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "Questions, quotes or orders — call us or send a message and we'll get back to you.",
+    "whatsapp": {
+      "title": "Chat on WhatsApp",
+      "description": "The fastest way to reach us — tap to start a chat."
+    },
+    "visit": {
+      "title": "Visit our shop"
+    },
+    "hours": {
+      "title": "Opening hours"
+    },
+    "mapNote": "Open in Google Maps",
+    "form": {
+      "nameLabel": "Your name",
+      "namePlaceholder": "e.g. Priya Sharma",
+      "phoneLabel": "Phone number",
+      "phonePlaceholder": "e.g. 98430 09971",
+      "messageLabel": "How can we help?",
+      "messagePlaceholder": "Tell us what needs cleaning — items, quantity, and any stains.",
+      "privacyNote": "We'll only use your details to reply to your enquiry.",
+      "successTitle": "Message received",
+      "successMessage": "Thanks for reaching out! We'll get back to you soon. For a quicker reply, message us on WhatsApp.",
+      "errorFallback": "Something went wrong. Please try again or contact us on WhatsApp."
+    }
+  },
+  "footer": {
+    "tagline": "Steam laundry, dry cleaning and garment care — handled with care.",
+    "contactTitle": "Contact",
+    "hoursTitle": "Opening hours",
+    "rights": "All rights reserved."
+  },
+  "gallery": {
+    "title": "Gallery",
+    "description": "A look at our work — our photo gallery is coming soon.",
+    "placeholderLabel": "Photo coming soon",
+    "captions": [
+      "Steam pressing & finishing",
+      "Wash & fold, neatly packed",
+      "Sorted & tagged orders",
+      "Careful stain treatment",
+      "Fresh linens & bedding",
+      "Our shop counter"
+    ]
+  },
+  "careers": {
+    "title": "Careers",
+    "description": "Want to join our team? Send us your details on WhatsApp or drop by the shop — we'd be happy to meet you.",
+    "cta": "Apply on WhatsApp"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "Sorry, the page you're looking for doesn't exist or has been moved."
+  }
+}

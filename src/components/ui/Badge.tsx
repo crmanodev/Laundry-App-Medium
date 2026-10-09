@@ -15,11 +15,11 @@ export interface BadgeProps {
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
-  neutral: "bg-zinc-100 text-zinc-700",
-  success: "bg-emerald-100 text-emerald-700",
-  warning: "bg-amber-100 text-amber-700",
-  danger: "bg-red-100 text-red-700",
-  info: "bg-sky-100 text-sky-700",
+  neutral: "bg-surface-soft text-ink-muted",
+  success: "bg-success-soft text-success",
+  warning: "bg-warning-soft text-warning",
+  danger: "bg-danger-soft text-danger",
+  info: "bg-primary-soft text-primary",
 };
 
 export function Badge({

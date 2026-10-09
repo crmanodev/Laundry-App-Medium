@@ -19,7 +19,7 @@ export function SuccessModal({
   return (
     <Modal open={open} onClose={onClose} title={title}>
       <div className="flex flex-col items-center gap-4 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-2xl text-emerald-600">
+        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-success-soft text-2xl text-success">
           ✓
         </span>
         <p className="text-sm text-zinc-600">{message}</p>

@@ -1,10 +1,10 @@
 {
-  "businessName": "Fresh Fold Laundry",
-  "supportEmail": "support@freshfold.example",
-  "supportPhone": "+1 (555) 010-2030",
-  "address": "123 Market Street, Springfield, CA 90210",
-  "currency": "USD",
-  "timezone": "America/Los_Angeles",
-  "openingHours": "Mon–Sat: 8:00 AM – 8:00 PM, Sun: 10:00 AM – 6:00 PM",
-  "orderPrefix": "FF"
+  "businessName": "OM SAI STEAM & LAUNDRY HUB",
+  "supportEmail": "",
+  "supportPhone": "+91 98430 09971",
+  "address": "[Shop address — to be provided by the business]",
+  "currency": "INR",
+  "timezone": "Asia/Kolkata",
+  "openingHours": "[Opening hours — to be provided by the business]",
+  "orderPrefix": "OS"
 }

@@ -5,29 +5,41 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { SuccessModal } from "@/components/ui/SuccessModal";
 import { Textarea } from "@/components/ui/Textarea";
-import { compose, email as emailValidator, minLength, required } from "@/lib/validation/validators";
+import { getDict } from "@/lib/i18n";
+import {
+  compose,
+  minLength,
+  phone as phoneValidator,
+  required,
+} from "@/lib/validation/validators";
 
 interface FormValues {
   name: string;
-  email: string;
+  phone: string;
   message: string;
 }
 
 type FieldErrors = Partial<Record<keyof FormValues, string>>;
 
-const initialValues: FormValues = { name: "", email: "", message: "" };
+const initialValues: FormValues = { name: "", phone: "", message: "" };
 
 export function ContactForm() {
+  const dict = getDict();
+  const form = dict.contact.form;
+
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [successOpen, setSuccessOpen] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
 
   const updateField = (field: keyof FormValues, value: string) => {
     setValues((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
+    setSubmitError(null);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const nameValidator = compose(required, minLength(2));
@@ -35,11 +47,11 @@ export function ContactForm() {
 
     const nextErrors: FieldErrors = {};
     const nameError = nameValidator(values.name);
-    const emailError = compose(required, emailValidator)(values.email);
+    const phoneError = compose(required, phoneValidator)(values.phone);
     const messageError = messageValidator(values.message);
 
     if (nameError) nextErrors.name = nameError;
-    if (emailError) nextErrors.email = emailError;
+    if (phoneError) nextErrors.phone = phoneError;
     if (messageError) nextErrors.message = messageError;
 
     if (Object.keys(nextErrors).length > 0) {
@@ -47,9 +59,25 @@ export function ContactForm() {
       return;
     }
 
-    // Boilerplate: replace with a server action / API call.
-    setValues(initialValues);
-    setSuccessOpen(true);
+    setSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) throw new Error("Contact request failed");
+
+      setValues(initialValues);
+      setSuccessOpen(true);
+    } catch {
+      setSubmitError(form.errorFallback);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -57,39 +85,54 @@ export function ContactForm() {
       <form onSubmit={handleSubmit} noValidate className="grid gap-4">
         <Input
           name="name"
-          label="Full name"
-          placeholder="Jane Doe"
+          label={form.nameLabel}
+          placeholder={form.namePlaceholder}
+          autoComplete="name"
           value={values.name}
           error={errors.name}
           onChange={(event) => updateField("name", event.target.value)}
         />
         <Input
-          name="email"
-          type="email"
-          label="Email address"
-          placeholder="jane@example.com"
-          value={values.email}
-          error={errors.email}
-          onChange={(event) => updateField("email", event.target.value)}
+          name="phone"
+          type="tel"
+          label={form.phoneLabel}
+          placeholder={form.phonePlaceholder}
+          autoComplete="tel"
+          value={values.phone}
+          error={errors.phone}
+          onChange={(event) => updateField("phone", event.target.value)}
         />
         <Textarea
           name="message"
-          label="How can we help?"
-          placeholder="Tell us about your laundry needs..."
+          label={form.messageLabel}
+          placeholder={form.messagePlaceholder}
           value={values.message}
           error={errors.message}
           onChange={(event) => updateField("message", event.target.value)}
         />
-        <Button type="submit" className="justify-self-start">
-          Send message
+
+        <p className="text-xs leading-5 text-ink-faint">{form.privacyNote}</p>
+
+        {submitError ? (
+          <p role="alert" className="text-sm font-medium text-danger">
+            {submitError}
+          </p>
+        ) : null}
+
+        <Button
+          type="submit"
+          disabled={submitting}
+          className="justify-self-start rounded-full px-6"
+        >
+          {submitting ? "…" : dict.common.sendMessage}
         </Button>
       </form>
 
       <SuccessModal
         open={successOpen}
         onClose={() => setSuccessOpen(false)}
-        title="Message sent"
-        message="Thanks for reaching out! We'll get back to you within one business day."
+        title={form.successTitle}
+        message={form.successMessage}
       />
     </>
   );

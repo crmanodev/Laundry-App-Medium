@@ -1,6 +1,7 @@
 /**
  * Shared, plain-CSS component styles.
  * Tailwind v4 lives in globals.css — keep framework-specific rules there.
+ * All colors reference the design tokens defined in globals.css.
  */
 
 .page-container {
@@ -17,11 +18,77 @@
 }
 
 .surface {
-  background-color: #fff;
-  border: 1px solid #e4e4e7;
-  border-radius: 0.75rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.surface-hover {
+  transition:
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.surface-hover:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.35);
+  transform: translateY(-2px);
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Gradient helpers driven by the theme tokens */
+.brand-gradient {
+  background-image: var(--gradient-brand);
+}
+
+.brand-gradient-strong {
+  background-image: var(--gradient-brand-strong);
+}
+
+/* Decorative soft blob used behind hero / CTA sections */
+.brand-glow {
+  background:
+    radial-gradient(
+      55% 55% at 18% 20%,
+      var(--primary-soft) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      45% 45% at 85% 15%,
+      var(--secondary-soft) 0%,
+      transparent 65%
+    );
+}
+
+/* Subtle dotted texture for hero backgrounds */
+.dot-grid {
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Scroll-reveal (see components/website/Reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

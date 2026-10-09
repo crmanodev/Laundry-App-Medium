@@ -23,13 +23,13 @@ export function Input({ label, error, className, id, ...props }: InputProps) {
         id={inputId}
         aria-invalid={error ? true : undefined}
         className={cn(
-          "h-10 w-full rounded-lg border border-zinc-300 bg-white px-3 text-sm text-zinc-900 placeholder:text-zinc-400 focus:border-zinc-900 focus:outline-none focus:ring-1 focus:ring-zinc-900",
-          error && "border-red-500",
+          "h-10 w-full rounded-lg border border-line-strong bg-surface px-3 text-sm text-ink placeholder:text-ink-faint focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary",
+          error && "border-danger",
           className,
         )}
         {...props}
       />
-      {error ? <p className="text-xs text-red-600">{error}</p> : null}
+      {error ? <p className="text-xs text-danger">{error}</p> : null}
     </div>
   );
 }
